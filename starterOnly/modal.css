@@ -562,7 +562,26 @@ footer {
       border-radius: 15px;
     }
   
-}  /*version mobile******************************************/
+}  
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.errorP, .errorN, #errorD, .errorE, #accepter, #errorQ, .errorL{font-size:14px;color: red;}
+ .btn-fermer{position: absolute;
+top: 45rem;
+right: 7rem;}
+.message{
+  position: absolute;
+  top: 16rem;
+  right: 3.5rem;
+}
+ /*version mobile******************************************/
 @media screen and (max-width: 426px) {
   /*.topnav a {display: none;}
   .topnav a.icon {
@@ -587,23 +606,4 @@ footer {
   .message{top:19rem ;right: 3rem;}
 }  
 
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
-  }
-  to {
-    opacity: 1;
-  }
-}
-.errorP, .errorN, #errorD, .errorE, #accepter, #errorQ, .errorL{font-size:14px;color: red;}
- .btn-fermer{position: absolute;
-top: 45rem;
-right: 7rem;}
-.message{
-  position: absolute;
-  top: 16rem;
-  right: 3.5rem;
-}
- 
  

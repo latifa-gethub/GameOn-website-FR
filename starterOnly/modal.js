@@ -46,13 +46,13 @@ close.addEventListener("click", function () {
 });
 //la fonction pour apparaitre le message de validation
 function message() {     
-    erreurP.innerHTML = "";
+   /* erreurP.innerHTML = "";
     erreurN.innerHTML = "";
     erreurE.innerHTML = "";
     erreurD.innerHTML = "";
     erreurQ.innerHTML = "";
     erreurL.innerHTML = "";
-    accepter.innerHTML = "";
+    accepter.innerHTML = "";*/
     myform.style.display = "none";
     const modalbody = document.querySelector(".modal-body");
     modalbody.innerHTML += `<p class="message">Merci pour votre inscription</p><button class="btn-fermer btn-submit">fermer</button>`;    
@@ -84,6 +84,7 @@ myform.addEventListener("submit", function (event) {
         event.preventDefault();
     } else {
         validate = true;
+        erreurP.innerHTML = "";
     }
     //recuperer champ nom***************************************
     let Nom = myform.last;
@@ -93,6 +94,7 @@ myform.addEventListener("submit", function (event) {
         event.preventDefault();
     } else {
         validate = true;
+        erreurN.innerHTML = "";
     }
      
     //recuperer champ email***********************************
@@ -104,6 +106,7 @@ myform.addEventListener("submit", function (event) {
         event.preventDefault();
     } else {
         validate = true;
+        erreurE.innerHTML = "";
     }
     //date de naissance**********************************************
     //recuperer champ date de naissance
@@ -114,6 +117,7 @@ myform.addEventListener("submit", function (event) {
         event.preventDefault();
     } else {
         validate = true;
+        erreurD.innerHTML = "";
     }
     // verifier le nb de fois******************************************
 
@@ -125,6 +129,7 @@ myform.addEventListener("submit", function (event) {
         event.preventDefault();
     } else {
         validate = true;
+        erreurQ.innerHTML = "";
     }
     //verifier que un input radio est cocher *********************
     let locations = document.querySelectorAll('[name="location"]');
@@ -132,6 +137,7 @@ myform.addEventListener("submit", function (event) {
         if (locations[i].checked) {
             console.log(locations[i].value);
             validate = true;
+            erreurL.innerHTML = "";
             break;
         } else {
             console.log("Il faut choisir une location");
@@ -143,13 +149,14 @@ myform.addEventListener("submit", function (event) {
     //recuperer la check obligatoire******************************
     if (document.querySelector("#checkbox1").checked) {
         validate = true;
+        accepter.innerHTML = "";
     } else {
         validate = false;
         event.preventDefault();
         accepter.innerHTML = "Vous devez vérifier si vous acceptez les conditions";
     }
     //verifier si tous les champs sont validé
-    if (validate) {
+    if (validate) {    
         message();
     }
 });
