@@ -81,7 +81,7 @@ p {
     background-color: #ff0000;
     color:  #ffffff;
     border-radius: 15px;
-  }*/
+  }}*/
 /*changement*******/
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
@@ -94,7 +94,7 @@ p {
   display: block;
   text-align: left;
 }
-}
+
 
 @keyframes modalopen {
 from {
@@ -106,7 +106,7 @@ to {
 }
 }   
 
- /* @media screen and (max-width: 768px) {
+   @media screen and (max-width: 768px) {
   
 
   .topnav.responsive {position: relative;}
@@ -120,7 +120,7 @@ to {
     display: block;
     text-align: left;
   }
-} */ 
+}   
 
 main {
   width: 92%;
@@ -149,8 +149,8 @@ main {
   background: #3876ac;
 } 
 .footer {
- /* margin: 20px;
-  padding: 10px;*/
+  margin: 20px;
+  padding: 10px; 
   font-family: var(--font-slab);
 }
 
@@ -483,7 +483,7 @@ input[data-error]::after {
   color: #fe142f;
   padding: 0;
   font-size: 1rem;
-  margin: 60px 0 30px;
+  margin: 60px 6px 30px;
   font-weight: bolder;
 }
   /*.hero-section > .btn-signup {
@@ -494,7 +494,8 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }/*******************les media****************************/
-   @media screen and (max-width: 768px) {    
+   @media screen and (max-width: 768px) { 
+
     .hero-img {
       grid-column: span 8;
     }
@@ -551,9 +552,9 @@ footer {
     .topnav a.icon {
       float: right;
       display: block;
-      color: red;
-      
+      color: red;      
     }
+     
     .fa{font-size: large;}
     .topnav a:hover {
       background-color: #ff0000;
@@ -583,6 +584,7 @@ footer {
      
   .header-logo img{width: 53%;}
   .btn-fermer{top: 30rem;right: 6rem;}
+  .message{top:19rem ;right: 3rem;}
 }  
 
 @keyframes modalopen {
@@ -594,14 +596,14 @@ footer {
     opacity: 1;
   }
 }
-#error, .errorN, #errorD, #errorE, #accepter, #errorQ, .errorL{font-size:14px;color: red;}
+.errorP, .errorN, #errorD, .errorE, #accepter, #errorQ, .errorL{font-size:14px;color: red;}
  .btn-fermer{position: absolute;
 top: 45rem;
-right: 9rem;}
+right: 7rem;}
 .message{
   position: absolute;
   top: 16rem;
-  right: 5rem;
+  right: 3.5rem;
 }
  
  
