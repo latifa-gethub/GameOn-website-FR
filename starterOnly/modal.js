@@ -28,47 +28,48 @@ modalBtn.addEventListener("click", launchModal);
 
 // launch modal form
 function launchModal() {
-    myform.style.display = "inline-block";
+    myform.style.display = "inline";
     modalbg.style.display = "block";
     heroSection.style.display = "none";
     topnav.style.display = "none";
     footer.style.display = "none";
     //une condition pour que le topnav s'affiche de nouveau on ouvrant le modal*******
     if (window.matchMedia("(max-width:426px)").matches) {
-        topnav.style.display = "block";
+        topnav.style.display = "inline-flex";
     }
 } //fermer le modal on appuiyant sur le croix
 close.addEventListener("click", function () {
     modalbg.style.display = "none";
-    heroSection.style.display = "block";
-    topnav.style.display = "inline-block";
-    footer.style.display = "block";
+    heroSection.style.display = "inline";
+    heroSection.style.display = "grid";
+    if (window.matchMedia("(max-width:768px)").matches) {
+        heroSection.style.display = "block";
+    }
+    topnav.style.display = "inline-flex";
+    footer.style.display = "inline";
 });
 //la fonction pour apparaitre le message de validation
-function message() {     
-   /* erreurP.innerHTML = "";
-    erreurN.innerHTML = "";
-    erreurE.innerHTML = "";
-    erreurD.innerHTML = "";
-    erreurQ.innerHTML = "";
-    erreurL.innerHTML = "";
-    accepter.innerHTML = "";*/
+function message() {
     myform.style.display = "none";
     const modalbody = document.querySelector(".modal-body");
-    modalbody.innerHTML += `<p class="message">Merci pour votre inscription</p><button class="btn-fermer btn-submit">fermer</button>`;    
-    modalbody.style.height = "48rem";
+    modalbody.innerHTML += `<p class="message">Merci pour votre inscription</p><button class="btn-fermer btn-submit">fermer</button>`;
+    modalbody.style.height = "40rem";
     //recuperer le boutton pour fermer le modal
     let btnFermer = document.querySelector(".btn-fermer");
     //evenement au click sur fermer
     btnFermer.addEventListener("click", function () {
         let myform = document.getElementById("Myform");
-        myform.style.display = "block";         
+        myform.style.display = "block";
         let modalMsg = document.querySelector(".message");
         btnFermer.remove();
         modalMsg.remove();
         modalbg.style.display = "none";
         heroSection.style.display = "block";
-        topnav.style.display = "inline-block";
+        heroSection.style.display = "grid";
+        if (window.matchMedia("(max-width:768px)").matches) {
+            heroSection.style.display = "block";
+        }
+        topnav.style.display = "inline-flex";
         footer.style.display = "block";
     });
 }
@@ -96,7 +97,7 @@ myform.addEventListener("submit", function (event) {
         validate = true;
         erreurN.innerHTML = "";
     }
-     
+
     //recuperer champ email***********************************
     let inputEmail = myform.email;
     let RegExpEmail = /^[a-zA-Z0-9._]+[@]{1}[a-zA-Z0-9._]+[.]{1}[a-z]{2,10}$/;
@@ -120,7 +121,6 @@ myform.addEventListener("submit", function (event) {
         erreurD.innerHTML = "";
     }
     // verifier le nb de fois******************************************
-
     //recuperer champ quantite
     let inputQuantity = myform.quantity;
     if (inputQuantity.value == "") {
@@ -156,7 +156,7 @@ myform.addEventListener("submit", function (event) {
         accepter.innerHTML = "Vous devez vérifier si vous acceptez les conditions";
     }
     //verifier si tous les champs sont validé
-    if (validate) {    
+    if (validate) {
         message();
     }
 });
