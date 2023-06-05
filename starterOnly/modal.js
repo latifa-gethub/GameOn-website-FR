@@ -33,7 +33,7 @@ function launchModal() {
     heroSection.style.display = "none";
     topnav.style.display = "none";
     footer.style.display = "none";
-    //une condition pour que le topnav s'affiche de nouveau on ouvrant le modal*******
+    //une condition pour que le topnav s'affiche on ouvrant le modal*******
     if (window.matchMedia("(max-width:426px)").matches) {
         topnav.style.display = "inline-flex";
     }
@@ -41,7 +41,7 @@ function launchModal() {
 close.addEventListener("click", function () {
     modalbg.style.display = "none";
     heroSection.style.display = "inline";
-    heroSection.style.display = "grid";
+   heroSection.style.display = "grid";
     if (window.matchMedia("(max-width:768px)").matches) {
         heroSection.style.display = "block";
     }

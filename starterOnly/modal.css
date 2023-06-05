@@ -78,7 +78,7 @@ p {
 
 main {
   width: 92%;
-  font-size: 130%;
+  font-size: 118%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
@@ -95,7 +95,7 @@ main {
   margin: auto;
   padding: 1rem;
   color: #fff;
-  padding: 0.75rem 2.5rem;
+  padding: 0.75rem 2rem;
   border-radius: 1rem;
   cursor: pointer;
 }
@@ -377,7 +377,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 77vh;
+  min-height: 75vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -386,13 +386,13 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 .hero-content {
-  padding: 51px 67px;
+  padding: 51px 55px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 392px;
+  min-width: 351px;
 }
 .hero-content::after {
   content: "";
@@ -408,22 +408,23 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 164%;
+  
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 52px;
   padding: 0;   
 }
 .btn-signup {
   outline: none;
   text-transform: capitalize;
-  font-size: 1.3rem;
-   margin-top: 54vh;
-   margin-left:7vw ;
+  font-size: 1.2rem;
+   margin-top: 65vh;
+   margin-left:5.5vw ;
   position: absolute;
 
 }
@@ -463,12 +464,12 @@ footer {
 }
 .errorP, .errorN, #errorD, .errorE, #accepter, #errorQ, .errorL{font-size:14px;color: red;}
  .btn-fermer{position: absolute;
-top: 45rem;
-right: 7rem;}
+margin-top: 31rem;
+ margin-left: 7rem;}
 .message{
-  position: absolute;
+  position:  relative;
   top: 16rem;
-  right: 3.5rem;
+margin-left: 3rem;
 }
 /*******************les media*******************************************/
 
@@ -494,7 +495,7 @@ right: 7rem;}
   .hero-section .btn-signup{
     /*mes changement********************/      
     font-size: 1rem;
-    padding: 10px 23px;   
+    padding: 10px 27px;   
     margin: 1rem auto;
    position: static;
     
@@ -551,8 +552,8 @@ right: 7rem;}
   main{position: relative;}
      
   .header-logo img{width: 53%;}
-  .btn-fermer{top: 30rem;right: 6rem;}
-  .message{top:19rem ;right: 3rem;}
+  .btn-fermer{margin-left: 3rem;}
+  .message{ margin-left: 1rem;}
 }  
 
 /********************************************************************************/
