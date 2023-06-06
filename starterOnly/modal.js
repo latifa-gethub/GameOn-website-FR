@@ -37,14 +37,11 @@ function launchModal() {
     if (window.matchMedia("(max-width:426px)").matches) {
         topnav.style.display = "inline-flex";
     }
-} //fermer le modal on appuiyant sur le croix
+} //close le modal on appuiyant sur le croix
 close.addEventListener("click", function () {
     modalbg.style.display = "none";
-    heroSection.style.display = "inline";
-   heroSection.style.display = "grid";
-    if (window.matchMedia("(max-width:768px)").matches) {
-        heroSection.style.display = "block";
-    }
+    //heroSection.style.display = "inline";
+    heroSection.style = "";
     topnav.style.display = "inline-flex";
     footer.style.display = "inline";
 });
@@ -53,7 +50,7 @@ function message() {
     myform.style.display = "none";
     const modalbody = document.querySelector(".modal-body");
     modalbody.innerHTML += `<p class="message">Merci pour votre inscription</p><button class="btn-fermer btn-submit">fermer</button>`;
-    modalbody.style.height = "40rem";
+    modalbody.style.height = "44rem";
     //recuperer le boutton pour fermer le modal
     let btnFermer = document.querySelector(".btn-fermer");
     //evenement au click sur fermer
@@ -64,11 +61,8 @@ function message() {
         btnFermer.remove();
         modalMsg.remove();
         modalbg.style.display = "none";
-        heroSection.style.display = "block";
-        heroSection.style.display = "grid";
-        if (window.matchMedia("(max-width:768px)").matches) {
-            heroSection.style.display = "block";
-        }
+        //heroSection.style.display = "block";
+        heroSection.style = "";
         topnav.style.display = "inline-flex";
         footer.style.display = "block";
     });
@@ -135,12 +129,10 @@ myform.addEventListener("submit", function (event) {
     let locations = document.querySelectorAll('[name="location"]');
     for (let i = 0; i < locations.length; i++) {
         if (locations[i].checked) {
-            console.log(locations[i].value);
             validate = true;
             erreurL.innerHTML = "";
             break;
         } else {
-            console.log("Il faut choisir une location");
             erreurL.innerHTML = "Il faut choisir une location";
             validate = false;
             event.preventDefault();
