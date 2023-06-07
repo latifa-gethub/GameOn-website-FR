@@ -22,7 +22,7 @@ let erreurE = document.querySelector(".errorE");
 let erreurD = document.getElementById("errorD");
 let erreurQ = document.getElementById("errorQ");
 let erreurL = document.querySelector(".errorL");
-let accepter = document.querySelector("#accepter");
+
 // launch modal event
 modalBtn.addEventListener("click", launchModal);
 
@@ -138,13 +138,14 @@ myform.addEventListener("submit", function (event) {
             event.preventDefault();
         }
     }
-    //recuperer la check obligatoire******************************
+    //recuperer le check obligatoire******************************
     if (document.querySelector("#checkbox1").checked) {
         validate = true;
         accepter.innerHTML = "";
     } else {
         validate = false;
         event.preventDefault();
+        let accepter = document.querySelector("#accepter");
         accepter.innerHTML = "Vous devez vérifier si vous acceptez les conditions";
     }
     //verifier si tous les champs sont validé
