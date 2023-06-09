@@ -121,20 +121,20 @@ inputDate.addEventListener("change", function (e) {
 /*adapter les element du formulaire *******************************/
 
 myform.addEventListener("submit", function (event) {
+    event.preventDefault();
     let validate = false;
     //recuperer champ prenom **************************
     let Prenom = document.getElementById("firstname");
     let RegExp = /^[a-zA-Z-\s]+$/;
-    if (Prenom.value == "") {
+    if (Prenom.value == "" || RegExp.test(Prenom.value) == false) {
         erreurP.innerHTML = "Veuillez entrer 2 caractères ou plus";
         validate = false;
-        // event.preventDefault();
+        event.preventDefault();
     } else {
         validate = true;
         erreurP.innerHTML = "";
     }
-    //recuperer champ nom***************************************
-
+    //verifier champ nom***************************************
     if (Nom.value == "" || RegExp.test(Nom.value) == false) {
         erreurN.innerHTML = "Veuillez entrer 2 caractères ou plus";
         validate = false;
@@ -143,7 +143,6 @@ myform.addEventListener("submit", function (event) {
         validate = true;
         erreurN.innerHTML = "";
     }
-
     //recuperer champ email***********************************
 
     let RegExpEmail = /^[a-zA-Z0-9._]+[@]{1}[a-zA-Z0-9._]+[.]{1}[a-z]{2,10}$/;
@@ -168,9 +167,7 @@ myform.addEventListener("submit", function (event) {
         validate = true;
         erreurD.innerHTML = "";
     }
-    // verifier le nb de fois******************************************
-    //recuperer champ quantite
-    
+    // verifier le nb de fois******************************************     
     if (inputQuantity.value == "" || inputQuantity.value < 0 || inputQuantity.value > 99) {
         erreurQ.innerHTML = "entre un nb entre 0 et 99";
         validate = false;
