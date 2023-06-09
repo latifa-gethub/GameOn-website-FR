@@ -30,7 +30,6 @@ let erreurL = document.querySelector(".errorL");
 
 // launch modal event
 modalBtn.addEventListener("click", launchModal);
-
 // launch modal form
 function launchModal() {
     myform.style.display = "inline";
@@ -72,9 +71,8 @@ function message() {
         footer.style.display = "block";
     });
 }
-
-Prenom.addEventListener("input", function (e) {
-    console.log(e.target.value.length);
+//verifier le champ prenom en input
+Prenom.addEventListener("input", function (e) {    
     let RegExp = /^[a-zA-Z-\s]+$/;
     if (RegExp.test(e.target.value) == false || e.target.value.length < 2) {
         erreurP.innerHTML = "Veuillez entrez au moins deux caracteres";
@@ -82,8 +80,9 @@ Prenom.addEventListener("input", function (e) {
         erreurP.innerHTML = "";
     }
 });
+//verifier le champ nom en input
 Nom.addEventListener("input", function (e) {
-    console.log(e.target.value.length);
+    
     let RegExp = /^[a-zA-Z-\s]+$/;
     if (RegExp.test(e.target.value) == false || e.target.value.length < 2) {
         erreurN.innerHTML = "Veuillez entrez au moins deux caracteres";
@@ -91,8 +90,9 @@ Nom.addEventListener("input", function (e) {
         erreurN.innerHTML = "";
     }
 });
+//verifier le champ mail en input
 inputEmail.addEventListener("input", function (e) {
-    console.log(e.target.value.length);
+    
     let RegExp = /^[a-zA-Z0-9._]+[@]{1}[a-zA-Z0-9._]+[.]{1}[a-z]{2,10}$/;
     if (RegExp.test(e.target.value) == false) {
         erreurE.innerHTML = "Veuillez entrez un mail valide";
@@ -100,6 +100,7 @@ inputEmail.addEventListener("input", function (e) {
         erreurE.innerHTML = "";
     }
 });
+//verifier le champ quantité en input
 inputQuantity.addEventListener("input", function (e) {
     if (inputQuantity.value < 0 || inputQuantity.value > 99) {
         erreurQ.innerHTML = "Veuillez entrez un nembre entre 0 et 99";
@@ -108,111 +109,100 @@ inputQuantity.addEventListener("input", function (e) {
     }
 });
 
-inputDate.addEventListener("change", function (e) {
-    console.log(e.target.value.length);
-    let RegExp = /^\d{2}.\d{2}.\d{4}$/;
+inputDate.addEventListener("input", function (e) {
+   
+    let RegExp = /(\d{4})-(\d{2})-(\d{2})/;
     if (RegExp.test(e.target.value) == false) {
         erreurD.innerHTML = "Veuillez entrez une date valide";
     } else {
         erreurD.innerHTML = "";
-    }
+    } 
 });
-
 /*adapter les element du formulaire *******************************/
 
 myform.addEventListener("submit", function (event) {
     event.preventDefault();
-    let validate = false;
+    let validate = 0;
     //recuperer champ prenom **************************
     let Prenom = document.getElementById("firstname");
     let RegExp = /^[a-zA-Z-\s]+$/;
     if (Prenom.value == "" || RegExp.test(Prenom.value) == false) {
         erreurP.innerHTML = "Veuillez entrer 2 caractères ou plus";
-        validate = false;
+        validate = 0;
         event.preventDefault();
     } else {
-        validate = true;
+        validate++;
         erreurP.innerHTML = "";
     }
     //verifier champ nom***************************************
     if (Nom.value == "" || RegExp.test(Nom.value) == false) {
         erreurN.innerHTML = "Veuillez entrer 2 caractères ou plus";
-        validate = false;
+        validate--;
         event.preventDefault();
     } else {
-        validate = true;
+        validate++;
         erreurN.innerHTML = "";
     }
-    //recuperer champ email***********************************
+    //vérifier champ email***********************************
 
     let RegExpEmail = /^[a-zA-Z0-9._]+[@]{1}[a-zA-Z0-9._]+[.]{1}[a-z]{2,10}$/;
     if (inputEmail.value == "" || RegExpEmail.test(inputEmail.value) == false) {
         erreurE.innerHTML = "le champ doit etre au format mail";
-        validate = false;
+        validate--;
         event.preventDefault();
     } else {
-        validate = true;
+        validate++;
         erreurE.innerHTML = "";
     }
     //date de naissance**********************************************
     //recuperer champ date de naissance
 
     let RegExpDate = /(\d{4})-(\d{2})-(\d{2})/;
-
     if (inputDate.value == "" || RegExpDate.test(inputDate.value) == false) {
         erreurD.innerHTML = "Vous devez entrer votre date de naissance";
-        validate = false;
+        validate--;
         event.preventDefault();
     } else {
-        validate = true;
+        validate++;
         erreurD.innerHTML = "";
     }
-    // verifier le nb de fois******************************************     
+    // verifier le nb de fois******************************************
     if (inputQuantity.value == "" || inputQuantity.value < 0 || inputQuantity.value > 99) {
         erreurQ.innerHTML = "entre un nb entre 0 et 99";
-        validate = false;
+        validate--;
         event.preventDefault();
     } else {
-        validate = true;
+        validate++;
         erreurQ.innerHTML = "";
     }
     //verifier que un input radio est cocher *********************
     let locations = document.querySelectorAll('[name="location"]');
     for (let i = 0; i < locations.length; i++) {
         if (locations[i].checked) {
-            validate = true;
+            validate++;
             erreurL.innerHTML = "";
             break;
         } else {
             erreurL.innerHTML = "Il faut choisir une location";
-            validate = false;
+            validate--;
             event.preventDefault();
         }
     }
     //recuperer la check obligatoire******************************
     if (document.querySelector("#checkbox1").checked) {
-        validate = true;
+        validate++;
         accepter.innerHTML = "";
     } else {
-        validate = false;
+        validate--;
         event.preventDefault();
 
         accepter.innerHTML = "Vous devez vérifier si vous acceptez les conditions";
     }
     //verifier si tous les champs sont validé
-    if (validate) {
+     
+    if (validate==7) {
         message();
-    }
+    } 
 });
 
-/*  let Prenom = document.getElementById("firstname");
-    let RegExp = /^[a-zA-Z-\s]+$/;
-    if (Prenom.value == "" || RegExp.test(Prenom.value) == false) {
-        erreurP.innerHTML = "Veuillez entrer 2 caractères ou plus";
-        validate = false;
-        // event.preventDefault();
-    } else {
-        validate = true;
-        erreurP.innerHTML = "";
-    }
- */
+ 
