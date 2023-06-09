@@ -19,6 +19,7 @@ let Prenom = document.getElementById("firstname");
 let Nom = myform.last;
 let inputEmail = myform.email;
 let inputDate = myform.birthdate;
+let inputQuantity = myform.quantity;
 let erreur = document.querySelectorAll(".error");
 let erreurP = document.querySelector(".errorP");
 let erreurN = document.querySelector(".errorN");
@@ -90,11 +91,27 @@ Nom.addEventListener("input", function (e) {
         erreurN.innerHTML = "";
     }
 });
- 
+inputEmail.addEventListener("input", function (e) {
+    console.log(e.target.value.length);
+    let RegExp = /^[a-zA-Z0-9._]+[@]{1}[a-zA-Z0-9._]+[.]{1}[a-z]{2,10}$/;
+    if (RegExp.test(e.target.value) == false) {
+        erreurE.innerHTML = "Veuillez entrez un mail valide";
+    } else {
+        erreurE.innerHTML = "";
+    }
+});
+inputQuantity.addEventListener("input", function (e) {
+    if (inputQuantity.value < 0 || inputQuantity.value > 99) {
+        erreurQ.innerHTML = "Veuillez entrez un nembre entre 0 et 99";
+    } else {
+        erreurQ.innerHTML = "";
+    }
+});
+
 inputDate.addEventListener("change", function (e) {
     console.log(e.target.value.length);
-    let RegExp =  /^\d{2}.\d{2}.\d{4}$/;
-    if (RegExp.test(e.target.value) == false ) {
+    let RegExp = /^\d{2}.\d{2}.\d{4}$/;
+    if (RegExp.test(e.target.value) == false) {
         erreurD.innerHTML = "Veuillez entrez une date valide";
     } else {
         erreurD.innerHTML = "";
@@ -153,8 +170,8 @@ myform.addEventListener("submit", function (event) {
     }
     // verifier le nb de fois******************************************
     //recuperer champ quantite
-    let inputQuantity = myform.quantity;
-    if (inputQuantity.value == "") {
+    
+    if (inputQuantity.value == "" || inputQuantity.value < 0 || inputQuantity.value > 99) {
         erreurQ.innerHTML = "entre un nb entre 0 et 99";
         validate = false;
         event.preventDefault();
