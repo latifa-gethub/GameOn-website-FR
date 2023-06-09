@@ -15,6 +15,10 @@ const heroSection = document.querySelector(".hero-section");
 const topnav = document.querySelector(".topnav");
 const footer = document.querySelector("footer");
 let myform = document.getElementById("Myform");
+let Prenom = document.getElementById("firstname");
+let Nom = myform.last;
+let inputEmail = myform.email;
+let inputDate = myform.birthdate;
 let erreur = document.querySelectorAll(".error");
 let erreurP = document.querySelector(".errorP");
 let erreurN = document.querySelector(".errorN");
@@ -67,22 +71,53 @@ function message() {
         footer.style.display = "block";
     });
 }
+
+Prenom.addEventListener("input", function (e) {
+    console.log(e.target.value.length);
+    let RegExp = /^[a-zA-Z-\s]+$/;
+    if (RegExp.test(e.target.value) == false || e.target.value.length < 2) {
+        erreurP.innerHTML = "Veuillez entrez au moins deux caracteres";
+    } else {
+        erreurP.innerHTML = "";
+    }
+});
+Nom.addEventListener("input", function (e) {
+    console.log(e.target.value.length);
+    let RegExp = /^[a-zA-Z-\s]+$/;
+    if (RegExp.test(e.target.value) == false || e.target.value.length < 2) {
+        erreurN.innerHTML = "Veuillez entrez au moins deux caracteres";
+    } else {
+        erreurN.innerHTML = "";
+    }
+});
+ 
+inputDate.addEventListener("change", function (e) {
+    console.log(e.target.value.length);
+    let RegExp =  /^\d{2}.\d{2}.\d{4}$/;
+    if (RegExp.test(e.target.value) == false ) {
+        erreurD.innerHTML = "Veuillez entrez une date valide";
+    } else {
+        erreurD.innerHTML = "";
+    }
+});
+
 /*adapter les element du formulaire *******************************/
-let validate = false;
+
 myform.addEventListener("submit", function (event) {
+    let validate = false;
     //recuperer champ prenom **************************
     let Prenom = document.getElementById("firstname");
     let RegExp = /^[a-zA-Z-\s]+$/;
-    if (Prenom.value == "" || RegExp.test(Prenom.value) == false) {
+    if (Prenom.value == "") {
         erreurP.innerHTML = "Veuillez entrer 2 caractères ou plus";
         validate = false;
-        event.preventDefault();
+        // event.preventDefault();
     } else {
         validate = true;
         erreurP.innerHTML = "";
     }
     //recuperer champ nom***************************************
-    let Nom = myform.last;
+
     if (Nom.value == "" || RegExp.test(Nom.value) == false) {
         erreurN.innerHTML = "Veuillez entrer 2 caractères ou plus";
         validate = false;
@@ -93,7 +128,7 @@ myform.addEventListener("submit", function (event) {
     }
 
     //recuperer champ email***********************************
-    let inputEmail = myform.email;
+
     let RegExpEmail = /^[a-zA-Z0-9._]+[@]{1}[a-zA-Z0-9._]+[.]{1}[a-z]{2,10}$/;
     if (inputEmail.value == "" || RegExpEmail.test(inputEmail.value) == false) {
         erreurE.innerHTML = "le champ doit etre au format mail";
@@ -105,8 +140,10 @@ myform.addEventListener("submit", function (event) {
     }
     //date de naissance**********************************************
     //recuperer champ date de naissance
-    let inputDate = myform.birthdate;
-    if (inputDate.value == "") {
+
+    let RegExpDate = /(\d{4})-(\d{2})-(\d{2})/;
+
+    if (inputDate.value == "" || RegExpDate.test(inputDate.value) == false) {
         erreurD.innerHTML = "Vous devez entrer votre date de naissance";
         validate = false;
         event.preventDefault();
@@ -138,14 +175,14 @@ myform.addEventListener("submit", function (event) {
             event.preventDefault();
         }
     }
-    //recuperer le check obligatoire******************************
+    //recuperer la check obligatoire******************************
     if (document.querySelector("#checkbox1").checked) {
         validate = true;
         accepter.innerHTML = "";
     } else {
         validate = false;
         event.preventDefault();
-        let accepter = document.querySelector("#accepter");
+
         accepter.innerHTML = "Vous devez vérifier si vous acceptez les conditions";
     }
     //verifier si tous les champs sont validé
@@ -153,3 +190,15 @@ myform.addEventListener("submit", function (event) {
         message();
     }
 });
+
+/*  let Prenom = document.getElementById("firstname");
+    let RegExp = /^[a-zA-Z-\s]+$/;
+    if (Prenom.value == "" || RegExp.test(Prenom.value) == false) {
+        erreurP.innerHTML = "Veuillez entrer 2 caractères ou plus";
+        validate = false;
+        // event.preventDefault();
+    } else {
+        validate = true;
+        erreurP.innerHTML = "";
+    }
+ */
