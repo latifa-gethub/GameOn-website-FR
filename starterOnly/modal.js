@@ -72,7 +72,7 @@ function message() {
     });
 }
 //verifier le champ prenom en input
-Prenom.addEventListener("input", function (e) {    
+Prenom.addEventListener("input", function (e) {
     let RegExp = /^[a-zA-Z-\s]+$/;
     if (RegExp.test(e.target.value) == false || e.target.value.length < 2) {
         erreurP.innerHTML = "Veuillez entrez au moins deux caracteres";
@@ -82,7 +82,6 @@ Prenom.addEventListener("input", function (e) {
 });
 //verifier le champ nom en input
 Nom.addEventListener("input", function (e) {
-    
     let RegExp = /^[a-zA-Z-\s]+$/;
     if (RegExp.test(e.target.value) == false || e.target.value.length < 2) {
         erreurN.innerHTML = "Veuillez entrez au moins deux caracteres";
@@ -92,7 +91,6 @@ Nom.addEventListener("input", function (e) {
 });
 //verifier le champ mail en input
 inputEmail.addEventListener("input", function (e) {
-    
     let RegExp = /^[a-zA-Z0-9._]+[@]{1}[a-zA-Z0-9._]+[.]{1}[a-z]{2,10}$/;
     if (RegExp.test(e.target.value) == false) {
         erreurE.innerHTML = "Veuillez entrez un mail valide";
@@ -110,13 +108,12 @@ inputQuantity.addEventListener("input", function (e) {
 });
 
 inputDate.addEventListener("input", function (e) {
-   
     let RegExp = /(\d{4})-(\d{2})-(\d{2})/;
     if (RegExp.test(e.target.value) == false) {
         erreurD.innerHTML = "Veuillez entrez une date valide";
     } else {
         erreurD.innerHTML = "";
-    } 
+    }
 });
 /*adapter les element du formulaire *******************************/
 
@@ -182,11 +179,11 @@ myform.addEventListener("submit", function (event) {
             validate++;
             erreurL.innerHTML = "";
             break;
-        } else {
-            erreurL.innerHTML = "Il faut choisir une location";
-            validate--;
-            event.preventDefault();
         }
+    }
+    if (validate < 6) {
+        erreurL.innerHTML = "Il faut choisir une location";
+        validate--;
     }
     //recuperer la check obligatoire******************************
     if (document.querySelector("#checkbox1").checked) {
@@ -199,10 +196,8 @@ myform.addEventListener("submit", function (event) {
         accepter.innerHTML = "Vous devez vérifier si vous acceptez les conditions";
     }
     //verifier si tous les champs sont validé
-     
-    if (validate==7) {
-        message();
-    } 
-});
 
- 
+    if (validate == 7) {
+        message();
+    }
+});
